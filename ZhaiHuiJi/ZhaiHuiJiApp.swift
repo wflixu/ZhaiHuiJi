@@ -12,9 +12,9 @@ import SwiftData
 struct ZhaiHuiJiApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Expenditure.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = ModelConfiguration("HouseFee",schema: schema, isStoredInMemoryOnly: false)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -29,4 +29,5 @@ struct ZhaiHuiJiApp: App {
         }
         .modelContainer(sharedModelContainer)
     }
+    
 }

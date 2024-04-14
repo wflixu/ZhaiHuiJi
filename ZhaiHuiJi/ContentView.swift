@@ -5,51 +5,42 @@
 //  Created by 李旭 on 2024/1/24.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @State private var createExpend = false
+    @State private var curKind = ExKind.gas
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationStack {
+            ScrollView {
+                DashboardView(kindRv: curKind.rawValue).frame(height: 300)
+                HStack {
+                    Picker("类型", selection: $curKind) {
+                        ForEach(ExKind.allCases) { exKind in
+                            Text("\(exKind.desc)").tag(exKind)
+                        }
                     }
+                    .buttonStyle(.borderedProminent)
                 }
-                .onDelete(perform: deleteItems)
+
+                ExpenditureListView(filterKind: curKind.rawValue).frame(height: 500)
             }
+
+            .padding()
+            .navigationTitle("家庭支出")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                Button {
+                    createExpend = true
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .imageScale(.large)
                 }
             }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            .sheet(isPresented: $createExpend) {
+                NewExpendView()
+                    .presentationDetents([.medium])
             }
         }
     }
@@ -57,5 +48,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: Expenditure.self, inMemory: true)
 }

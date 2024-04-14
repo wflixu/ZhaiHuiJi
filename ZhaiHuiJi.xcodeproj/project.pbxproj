@@ -9,18 +9,30 @@
 /* Begin PBXBuildFile section */
 		5C21C7B62B61647600D83C9B /* ZhaiHuiJiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7B52B61647600D83C9B /* ZhaiHuiJiApp.swift */; };
 		5C21C7B82B61647600D83C9B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7B72B61647600D83C9B /* ContentView.swift */; };
-		5C21C7BA2B61647600D83C9B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7B92B61647600D83C9B /* Item.swift */; };
+		5C21C7BA2B61647600D83C9B /* Expenditure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7B92B61647600D83C9B /* Expenditure.swift */; };
 		5C21C7BC2B61647800D83C9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C21C7BB2B61647800D83C9B /* Assets.xcassets */; };
 		5C21C7BF2B61647800D83C9B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C21C7BE2B61647800D83C9B /* Preview Assets.xcassets */; };
+		5C21C7C72B61696200D83C9B /* ExpenditureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7C62B61696200D83C9B /* ExpenditureListView.swift */; };
+		5C21C7CA2B616D0800D83C9B /* NewExpendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7C92B616D0800D83C9B /* NewExpendView.swift */; };
+		5C21C7CD2B6176AB00D83C9B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7CC2B6176AB00D83C9B /* Util.swift */; };
+		5C21C7CF2B6238F400D83C9B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7CE2B6238F400D83C9B /* DashboardView.swift */; };
+		5C21C7D12B623F2F00D83C9B /* ExpenditureSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7D02B623F2F00D83C9B /* ExpenditureSamples.swift */; };
+		5C21C7D32B6241B800D83C9B /* PreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7D22B6241B700D83C9B /* PreviewWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5C21C7B22B61647600D83C9B /* ZhaiHuiJi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhaiHuiJi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C21C7B52B61647600D83C9B /* ZhaiHuiJiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZhaiHuiJiApp.swift; sourceTree = "<group>"; };
 		5C21C7B72B61647600D83C9B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5C21C7B92B61647600D83C9B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5C21C7B92B61647600D83C9B /* Expenditure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenditure.swift; sourceTree = "<group>"; };
 		5C21C7BB2B61647800D83C9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C21C7BE2B61647800D83C9B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C21C7C62B61696200D83C9B /* ExpenditureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureListView.swift; sourceTree = "<group>"; };
+		5C21C7C92B616D0800D83C9B /* NewExpendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpendView.swift; sourceTree = "<group>"; };
+		5C21C7CC2B6176AB00D83C9B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		5C21C7CE2B6238F400D83C9B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		5C21C7D02B623F2F00D83C9B /* ExpenditureSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureSamples.swift; sourceTree = "<group>"; };
+		5C21C7D22B6241B700D83C9B /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +67,12 @@
 			children = (
 				5C21C7B52B61647600D83C9B /* ZhaiHuiJiApp.swift */,
 				5C21C7B72B61647600D83C9B /* ContentView.swift */,
-				5C21C7B92B61647600D83C9B /* Item.swift */,
+				5C21C7C62B61696200D83C9B /* ExpenditureListView.swift */,
+				5C21C7C92B616D0800D83C9B /* NewExpendView.swift */,
+				5C21C7CE2B6238F400D83C9B /* DashboardView.swift */,
 				5C21C7BB2B61647800D83C9B /* Assets.xcassets */,
+				5C21C7CB2B6175D900D83C9B /* Extends */,
+				5C21C7C52B61660400D83C9B /* Models */,
 				5C21C7BD2B61647800D83C9B /* Preview Content */,
 			);
 			path = ZhaiHuiJi;
@@ -66,8 +82,26 @@
 			isa = PBXGroup;
 			children = (
 				5C21C7BE2B61647800D83C9B /* Preview Assets.xcassets */,
+				5C21C7D02B623F2F00D83C9B /* ExpenditureSamples.swift */,
+				5C21C7D22B6241B700D83C9B /* PreviewWrapper.swift */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5C21C7C52B61660400D83C9B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C21C7B92B61647600D83C9B /* Expenditure.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5C21C7CB2B6175D900D83C9B /* Extends */ = {
+			isa = PBXGroup;
+			children = (
+				5C21C7CC2B6176AB00D83C9B /* Util.swift */,
+			);
+			path = Extends;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +174,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C21C7D32B6241B800D83C9B /* PreviewWrapper.swift in Sources */,
+				5C21C7C72B61696200D83C9B /* ExpenditureListView.swift in Sources */,
+				5C21C7CD2B6176AB00D83C9B /* Util.swift in Sources */,
 				5C21C7B82B61647600D83C9B /* ContentView.swift in Sources */,
-				5C21C7BA2B61647600D83C9B /* Item.swift in Sources */,
+				5C21C7CF2B6238F400D83C9B /* DashboardView.swift in Sources */,
+				5C21C7BA2B61647600D83C9B /* Expenditure.swift in Sources */,
+				5C21C7D12B623F2F00D83C9B /* ExpenditureSamples.swift in Sources */,
 				5C21C7B62B61647600D83C9B /* ZhaiHuiJiApp.swift in Sources */,
+				5C21C7CA2B616D0800D83C9B /* NewExpendView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ZhaiHuiJi/Preview Content\"";
+				DEVELOPMENT_TEAM = 4L3563XCBN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -304,6 +345,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ZhaiHuiJi/Preview Content\"";
+				DEVELOPMENT_TEAM = 4L3563XCBN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
