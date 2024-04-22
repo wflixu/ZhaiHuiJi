@@ -28,6 +28,7 @@ struct ZhaiHuiJiApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        .environment(\.locale, .init(identifier: "zh_CN"))
     }
     
 }

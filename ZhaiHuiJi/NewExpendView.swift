@@ -13,23 +13,28 @@ struct NewExpendView: View {
 
     @State private var count = 0.0
     @State private var kind = ExKind.gas.rawValue
+    @State private var datetime = Date.now
 
     var body: some View {
         NavigationStack {
             Form {
                 LabeledContent {
                     TextField("Count", value: $count, formatter: NumberFormatter())
+                        .multilineTextAlignment(.trailing)
                 } label: {
-                    Text("Count:")
+                    Text("值:")
                 }.keyboardType(.decimalPad)
                 
-                Picker("Kind:",selection: $kind) {
+                Picker("种类:",selection: $kind) {
                     ForEach(ExKind.allCases) { item in
                         Text(item.desc).tag(item.rawValue)
                     }
                 }
-                Button("Create") {
-                    let newExpend = Expenditure(count: count, kind: kind)
+                
+                DatePicker("日期时间:", selection: $datetime, displayedComponents: [.date, .hourAndMinute])
+                
+                Button("添加记录") {
+                    let newExpend = Expenditure(count: count, datetime: datetime, kind: kind)
                     context.insert(newExpend)
                     dismiss()
                 }
@@ -41,7 +46,7 @@ struct NewExpendView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button("Cancel") {
+                        Button("取消") {
                             dismiss()
                         }
                     }
