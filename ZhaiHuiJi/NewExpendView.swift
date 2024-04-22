@@ -20,20 +20,21 @@ struct NewExpendView: View {
             Form {
                 LabeledContent {
                     TextField("Count", value: $count, formatter: NumberFormatter())
+                        .multilineTextAlignment(.trailing)
                 } label: {
-                    Text("值")
+                    Text("值:")
                 }.keyboardType(.decimalPad)
                 
-                Picker("种类",selection: $kind) {
+                Picker("种类:",selection: $kind) {
                     ForEach(ExKind.allCases) { item in
                         Text(item.desc).tag(item.rawValue)
                     }
                 }
                 
-                DatePicker("日期时间", selection: $datetime, displayedComponents: [.date, .hourAndMinute])
+                DatePicker("日期时间:", selection: $datetime, displayedComponents: [.date, .hourAndMinute])
                 
                 Button("添加记录") {
-                    let newExpend = Expenditure(count: count, created: datetime, kind: kind)
+                    let newExpend = Expenditure(count: count, datetime: datetime, kind: kind)
                     context.insert(newExpend)
                     dismiss()
                 }

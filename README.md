@@ -2,18 +2,31 @@
 [![SwiftUI](https://img.shields.io/badge/SwiftUI-✓-orange)](https://developer.apple.com/xcode/swiftui/)
 [![macOS 14](https://img.shields.io/badge/macOS14-Compatible-green)](https://www.apple.com/macos/sonoma/)
 
-![](./ZhaiHuiJi/Assets.xcassets/AppIcon.appiconset/AppIcon@1x.png)
+
+<img src="./ZhaiHuiJi/Assets.xcassets/AppIcon.appiconset/AppIcon@1x.png" width="200" />
+
+<hr/>
+<br/>
+<br/>
+<br/>
 
 #  水电气
 
 记录家庭用水用电用气
 
-
+<br/>
+<br/>
 
 
 ## 功能
 - [x] 图表展示最近一个月的用量情况
 - [x] 添加删除编辑记录
+
+## 截图
+
+
+<img src="./ZhaiHuiJi/Assets.xcassets/preview.imageset/preview.png" width="360"  alt="预览"/>
+
 
 
 

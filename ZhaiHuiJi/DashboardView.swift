@@ -8,18 +8,18 @@
 import Charts
 import SwiftData
 import SwiftUI
-import SwiftUICharts
 
 struct DashboardView: View {
     @Environment(\.modelContext) private var context
     @State var kindRv: ExKind = .gas
+
     @State private var data: [Expenditure] = []
 
     @Query private var expenditures: [Expenditure]
-    @State private var rawSelectedDate: String?
+    @State private var rawSelectedDate: Date?
     @State private var selectedRange: ClosedRange<String>?
 
-    @State private var scrollPosition: Date = Date.now.addingTimeInterval(-1 * 3600 * 24 * 30)
+    @State private var scrollPosition: Date = Date.now.addingTimeInterval(-1 * 3600 * 24 * 7)
 
     let dateFormatter = {
         let dateFormatter = DateFormatter()
@@ -27,18 +27,30 @@ struct DashboardView: View {
         return dateFormatter
     }()
 
-    init(filterKind: Int = 1) {
-        let predicate = #Predicate<Expenditure> { expend in
-            expend.kind == filterKind
+    init(filterKind: Int = 1, span: TimeSpan = TimeSpan.month) {
+        var predicate: Predicate<Expenditure>
+        if span == TimeSpan.all {
+            predicate = #Predicate<Expenditure> { expend in
+                expend.kind == filterKind
+            }
+        } else {
+            let timespanAgo = Calendar.current.date(byAdding: span == TimeSpan.month ? .month : .year, value: -1, to: .now)!
+            predicate = #Predicate<Expenditure> { expend in
+                expend.kind == filterKind && expend.datetime >= timespanAgo
+            }
         }
-        _expenditures = Query(filter: predicate, sort:\.created, order:.reverse )
+        _expenditures = Query(filter: predicate, sort: \.datetime)
     }
 
     var ave: String {
-        print("ave....")
         if let index = expenditures.firstIndex(where: { exp in
 
-            dateFormatter.string(from: exp.created) == rawSelectedDate
+            guard let rawSelectedDate else {
+                return false
+            }
+            let calendar = Calendar.current
+
+            return calendar.isDate(exp.datetime, equalTo: rawSelectedDate, toGranularity: .hour)
 
         }) {
             if index == 0 {
@@ -48,7 +60,7 @@ struct DashboardView: View {
                 let expend = expenditures[index]
 
                 let diff = expend.count - previousExpend.count
-                let span = expend.created.timeIntervalSince(previousExpend.created) / (60 * 60 * 24)
+                let span = expend.datetime.timeIntervalSince(previousExpend.datetime) / (60 * 60 * 24)
                 print(span)
                 let avd = diff / Double(span)
                 return String(format: "%.2f", avd)
@@ -60,21 +72,18 @@ struct DashboardView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Text(scrollPosition.description)
-            }
             Chart {
                 ForEach(self.expenditures) { expend in
 
                     LineMark(
-                        x: .value("Day", expend.created, unit: .day),
+                        x: .value("Day", expend.datetime, unit: .hour),
                         y: .value("Value", expend.count)
                     )
 
                     BarMark(
-                        x: .value("Day", expend.created, unit: .day),
+                        x: .value("Day", expend.datetime, unit: .hour),
                         y: .value("Value2", getAvd(expend)),
-                        width: 20
+                        width: 12
                     ).annotation { _ in
                         Text(getAvdStr(expend))
                     }
@@ -84,12 +93,11 @@ struct DashboardView: View {
                         x: .value("Selected", rawSelectedDate)
                     )
                     .foregroundStyle(Color.red)
-                    .offset(yStart: 40)
+                    .offset(yStart: 60)
                     .zIndex(1)
                     .annotation(position: .top, spacing: 0, overflowResolution: .init(
                         x: .fit(to: .automatic),
                         y: .disabled
-
                     )) {
                         valueSelectionPopover()
                     }
@@ -98,28 +106,28 @@ struct DashboardView: View {
             .foregroundStyle(.blue)
             .chartXSelection(value: $rawSelectedDate)
             .chartScrollableAxes(.horizontal)
-            .chartXVisibleDomain(length: 3600 * 24 * 30 * 6)
+            .chartXVisibleDomain(length: 3600 * 24 * 10)
             .chartScrollPosition(x: $scrollPosition)
-//            .chartScrollTargetBehavior(
-//                .valueAligned(
-//                    matching: .init(hour: 0),
-//                    majorAlignment: .matching(.init(day: 1))
-//                ))
-//           
+            .chartScrollTargetBehavior(
+                .valueAligned(
+                    matching: .init(hour: 0),
+                    majorAlignment: .matching(.init(day: 1))
+                ))
+
 //            .chartYAxis {
-//                AxisMarks(position: .leading, values: .stride(by: 2)) {
+//                AxisMarks(position: .trailing, values: .stride(by: 5)) {
 //                    AxisTick()
-//         
+//
 //                    AxisValueLabel()
 //                }
-//                AxisMarks(position: .trailing, values: .automatic(desiredCount: 8)) {
+//                AxisMarks(position: .leading, values: .stride(by: 1)) {
 //                    AxisTick()
-//                   
+//
 //                    AxisValueLabel()
 //                }
 //            }
 
-        }.padding([.top], 40)
+        }.padding([.top], 10)
     }
 
     func areDatesOnSameDay(date1: Date, date2: Date) -> Bool {
@@ -156,7 +164,7 @@ struct DashboardView: View {
             } else {
                 let previousExpend = expenditures[i - 1]
                 let diff = expend.count - previousExpend.count
-                let span = expend.created.timeIntervalSince(previousExpend.created)
+                let span = expend.datetime.timeIntervalSince(previousExpend.datetime)
                 let avd = diff / Double(span) * 60 * 60 * 24
                 return avd
             }
@@ -168,25 +176,16 @@ struct DashboardView: View {
     func getAvdStr(_ expend: Expenditure) -> String {
         if let i = expenditures.firstIndex(where: { $0 == expend }) {
             if i == 0 {
-                return "0"
+                return ""
             } else {
                 let previousExpend = expenditures[i - 1]
                 let diff = expend.count - previousExpend.count
-                let span = expend.created.timeIntervalSince(previousExpend.created)
+                let span = expend.datetime.timeIntervalSince(previousExpend.datetime)
                 let avd = diff / Double(span) * 60 * 60 * 24
                 return String(format: "%.2f", avd)
             }
         } else {
-            return "0.0"
+            return ""
         }
     }
-}
-
-#Preview {
-    let preview = PreviewWrapper(Expenditure.self)
-    preview.addExamples(Expenditure.sampleExpenditures)
-    return NavigationStack {
-        DashboardView(filterKind: ExKind.gas.rawValue)
-    }
-    .modelContainer(preview.container)
 }

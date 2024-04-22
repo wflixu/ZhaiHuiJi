@@ -9,15 +9,17 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+
 @Model
-class Expenditure {
+final class Expenditure {
+    var id: UUID = UUID()
     var count : Double = 0.0
-    var created: Date = Date.now
+    var datetime: Date = Date.now
     var kind : ExKind.RawValue = ExKind.gas.rawValue
     
-    init(count: Double = 0.0, created: Date = Date.now, kind: ExKind.RawValue = ExKind.gas.rawValue) {
+    init(count: Double = 0.0, datetime: Date = Date.now, kind: ExKind.RawValue = ExKind.gas.rawValue) {
         self.count = count
-        self.created = created
+        self.datetime = datetime
         self.kind = kind
     }
     
@@ -49,4 +51,23 @@ enum ExKind: Int, Codable, Identifiable, CaseIterable {
                 "lightbulb.max"
         }
     }
+}
+
+enum TimeSpan:String, Identifiable, CaseIterable {
+    case month, year, all
+    var id: Self {
+        self
+    }
+    
+    var desc: String {
+        switch self {
+            case .month:
+                "一月"
+            case .year:
+                "一年"
+            case .all:
+                "全部"
+        }
+    }
+    
 }

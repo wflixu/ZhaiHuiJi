@@ -18,6 +18,7 @@
 		5C21C7CF2B6238F400D83C9B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7CE2B6238F400D83C9B /* DashboardView.swift */; };
 		5C21C7D12B623F2F00D83C9B /* ExpenditureSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7D02B623F2F00D83C9B /* ExpenditureSamples.swift */; };
 		5C21C7D32B6241B800D83C9B /* PreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21C7D22B6241B700D83C9B /* PreviewWrapper.swift */; };
+		5C7230152BD617B9007EBC4A /* EditExpend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7230142BD617B9007EBC4A /* EditExpend.swift */; };
 		5CC980962BCE4FEF00A87701 /* ChartsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC980952BCE4FEF00A87701 /* ChartsDemoView.swift */; };
 		5CC980992BCEB47C00A87701 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 5CC980982BCEB47C00A87701 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		5C21C7CE2B6238F400D83C9B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		5C21C7D02B623F2F00D83C9B /* ExpenditureSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenditureSamples.swift; sourceTree = "<group>"; };
 		5C21C7D22B6241B700D83C9B /* PreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewWrapper.swift; sourceTree = "<group>"; };
+		5C7230142BD617B9007EBC4A /* EditExpend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpend.swift; sourceTree = "<group>"; };
 		5CC980952BCE4FEF00A87701 /* ChartsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsDemoView.swift; sourceTree = "<group>"; };
 		5CDE94AE2BCC270700B05814 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +77,7 @@
 				5C21C7B72B61647600D83C9B /* ContentView.swift */,
 				5C21C7C62B61696200D83C9B /* ExpenditureListView.swift */,
 				5C21C7C92B616D0800D83C9B /* NewExpendView.swift */,
+				5C7230142BD617B9007EBC4A /* EditExpend.swift */,
 				5C21C7CE2B6238F400D83C9B /* DashboardView.swift */,
 				5C21C7BB2B61647800D83C9B /* Assets.xcassets */,
 				5C21C7CB2B6175D900D83C9B /* Extends */,
@@ -191,6 +194,7 @@
 				5C21C7C72B61696200D83C9B /* ExpenditureListView.swift in Sources */,
 				5C21C7CD2B6176AB00D83C9B /* Util.swift in Sources */,
 				5C21C7B82B61647600D83C9B /* ContentView.swift in Sources */,
+				5C7230152BD617B9007EBC4A /* EditExpend.swift in Sources */,
 				5CC980962BCE4FEF00A87701 /* ChartsDemoView.swift in Sources */,
 				5C21C7CF2B6238F400D83C9B /* DashboardView.swift in Sources */,
 				5C21C7BA2B61647600D83C9B /* Expenditure.swift in Sources */,
