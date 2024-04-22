@@ -29,7 +29,7 @@ struct ExpenditureListView: View {
                     ForEach(expenditures) { expend in
                        
                         HStack {
-                            Image(systemName: expend.kind == ExKind.gas.rawValue ? "gauge.with.dots.needle.bottom.50percent" : "drop.degreesign.fill")
+                            Image(systemName: ExKind(rawValue: expend.kind)!.icon)
                             Text("\(expend.count.fixed())")
                             Text("\(formatterDate(date: expend.created))")
                         }

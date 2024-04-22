@@ -12,24 +12,31 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var createExpend = false
     @State private var curKind = ExKind.gas
+    
     var body: some View {
         NavigationStack {
             ScrollView {
-                DashboardView(kindRv: curKind.rawValue).frame(height: 300)
-                HStack {
-                    Picker("类型", selection: $curKind) {
-                        ForEach(ExKind.allCases) { exKind in
-                            Text("\(exKind.desc)").tag(exKind)
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
+                DashboardView(filterKind: curKind.rawValue).frame(height: 300)
 
+                HStack {
+                    GeometryReader { geometry in
+                        Picker("类型", selection: $curKind) {
+                            ForEach(ExKind.allCases) { exKind in
+                                Text("\(exKind.desc)").tag(exKind)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .frame(width: geometry.size.width, height: 50)
+                    }
+                }.frame(height: 50)
+                
+                Divider()
+                
                 ExpenditureListView(filterKind: curKind.rawValue).frame(height: 500)
             }
 
             .padding()
-            .navigationTitle("家庭支出")
+            .navigationTitle("水电气记录")
             .toolbar {
                 Button {
                     createExpend = true

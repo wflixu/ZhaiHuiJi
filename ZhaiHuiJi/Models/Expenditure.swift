@@ -39,4 +39,14 @@ enum ExKind: Int, Codable, Identifiable, CaseIterable {
                 "电"
         }
     }
+    var icon:String {
+        switch self {
+            case .gas:
+                "gauge.with.dots.needle.bottom.50percent"
+            case .water:
+                "drop.degreesign.fill"
+            case .electricity:
+                "lightbulb.max"
+        }
+    }
 }
