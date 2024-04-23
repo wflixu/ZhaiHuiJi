@@ -3,7 +3,7 @@
 [![macOS 14](https://img.shields.io/badge/macOS14-Compatible-green)](https://www.apple.com/macos/sonoma/)
 
 
-<img src="./ZhaiHuiJi/Assets.xcassets/AppIcon.appiconset/AppIcon@1x.png" width="200" />
+<img src="./ZhaiHuiJi/Assets.xcassets/AppIcon.appiconset/AppIcon.jpeg" width="200" />
 
 <hr/>
 <br/>

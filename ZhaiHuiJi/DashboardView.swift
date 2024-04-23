@@ -54,7 +54,7 @@ struct DashboardView: View {
 
         }) {
             if index == 0 {
-                return "start"
+                return ""
             } else {
                 let previousExpend = expenditures[index - 1]
                 let expend = expenditures[index]
@@ -66,7 +66,7 @@ struct DashboardView: View {
                 return String(format: "%.2f", avd)
             }
         } else {
-            return "no"
+            return ""
         }
     }
 
